@@ -1,0 +1,6 @@
+date_id,date_day,date_month,date_year,day_of_week,is_weekend
+2025-08-01,1,8,2025,Friday,False
+2025-08-02,2,8,2025,Saturday,True
+2025-08-03,3,8,2025,Sunday,True
+2025-08-04,4,8,2025,Monday,False
+2025-08-05,5,8,2025,Tuesday,False
