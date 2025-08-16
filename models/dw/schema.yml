@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: fact_orders
+    description: "Dimension table containing order details, including order date, status, and customer reference for Jaffle Shop."
+    columns:
+      - name: order_id
+        description: "Unique identifier for the order, sourced from order.ID."
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "Unique identifier for the customer who placed the order, sourced from order.USER_ID."
+        tests:
+          - not_null
+      - name: order_date
+        description: "The date the order was placed."
+        tests:
+          - not_null
+      - name: Status
+        description: "Current status of the order (e.g., pending, completed, cancelled)."
+
+  - name: fact_orders_incremental
+    description: "Fact table containing order details, including order date, status, customer reference, and last updated date for Jaffle Shop."
+    config:
+      materialized: incremental
+    columns:
+      - name: order_id
+        description: "Unique identifier for the order, sourced from order_2.ID."
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "Unique identifier for the customer who placed the order, sourced from order_2.USER_ID."
+        tests:
+          - not_null
+      - name: order_date
+        description: "The date the order was placed."
+        tests:
+          - not_null
+      - name: order_status
+        description: "Current status of the order (e.g., pending, completed, cancelled)."
+      - name: comment
