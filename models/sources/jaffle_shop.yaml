@@ -1,0 +1,43 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    schema: dbt_tvu
+    tables:
+      - name: customers
+        description: "Contains basic customer information for Jaffle Shop, including names and identifiers. Used for tracking and analytics."
+        columns:
+          - name: ID
+            description: "Unique identifier for the customer"
+          - name: FIRST_NAME
+            description: "First name of the customer"
+          - name: LAST_NAME
+            description: "Last name of the customer"
+
+      - name: orders
+        description: "Contains order information for Jaffle Shop, including user association, order date and status."
+        columns:
+          - name: ID
+            description: "Unique identifier for the order"
+          - name: USER_ID
+            description: "Identifier of the customer who placed the order"
+          - name: ORDER_DATE
+            description: "The date when the order was placed"
+          - name: STATUS
+            description: "Current status of the order (e.g., pending, completed, cancelled)"
+
+      - name: stripe_payments
+        description: "Records payments made through Stripe, linked to orders and including details about payment method, status, and amount."
+        columns:
+          - name: ID
+            description: "Unique identifier for the Stripe payment"
+          - name: ORDERID
+            description: "Identifier of the order associated with this payment"
+          - name: PAYMENTMETHOD
+            description: "Method used for payment (e.g., credit card, Apple Pay)"
+          - name: STATUS
+            description: "Current status of the payment (e.g., succeeded, failed)"
+          - name: AMOUNT
+            description: "Amount paid in the transaction"
+          - name: CREATED
+            description: "Timestamp when the payment record was created"
